@@ -1,6 +1,7 @@
-# With assistance from Hunter Shiells and Warren Phillips
+# With assistance from Hunter Shiells (Git: HunterShiells) and Warren Phillips (Git: warrenphilly)
 
 
+# Prints the board in a square to the console
 def printboard(board):
     numbers = '01234567890123456789'
     mids = '_' * 20
@@ -12,7 +13,8 @@ def printboard(board):
     print(' ' + mids)
     print(' ' + numbers)
 
-
+    
+# The first word is initialized in the center of the board
 def addFirstWord(board, word):
     wordlength = len(word)
     boardlength = len(board)
@@ -24,6 +26,7 @@ def addFirstWord(board, word):
     return True
 
 
+# Checks to see if the word fits in any way vertically. Places the word in the last possible position
 def checkvertical(board, word, row, col):
     # if the word is longer than the board it will not place
     wordlength = len(word)
@@ -58,11 +61,13 @@ def checkvertical(board, word, row, col):
     return letterfound
 
 
+# Inserts a word vertically if it fits
 def addvertical(board, word):
     boardlength = len(board)
     wordlength = len(word)
     for i in range(boardlength):
         for j in range(boardlength):
+            # call to see if word fits
             if checkvertical(board, word, i, j) is True:
                 for a in range(wordlength):
                     board[i+a][j] = word[a]
@@ -70,6 +75,7 @@ def addvertical(board, word):
     return False
 
 
+# Checks to see if the word fits in any way horizontally. Places the word in the last possible position
 def checkhorizontal(board, word, row, col):
     # if the word is longer than the board it will not place
     wordlength = len(word)
@@ -107,6 +113,7 @@ def checkhorizontal(board, word, row, col):
     return letterfound
 
 
+# Inserts a word horizontally if it fits
 def addhorizontal(board, word):
     d = len(board)
     for i in range(d):
@@ -118,6 +125,7 @@ def addhorizontal(board, word):
     return False
 
 
+# Alternates between adding words vertically and horizontally
 def crossword(L):
     blank = ' '
     board = [[blank] * 20 for i in range(20)]
@@ -130,5 +138,5 @@ def crossword(L):
     printboard(board)
 
 
-crossword(['menacing', 'ericharley', 'stylistic', 'vivianhu', 'stan', 'drdavemason', 'daphne', 'cockwell', 'pitman', 'bedbug'])
-crossword(['guacamole', 'television', 'microwave', 'dishes', 'laundry', 'couch', 'computer', 'backpack', 'slurmp', 'lofus', 'bezel'])
+# EXAMPLE FUNCTION CALL: crossword(['menacing', 'ericharley', 'stylistic', 'vivianhu', 'stan', 'drdavemason', 'daphne', 'cockwell', 'pitman', 'bedbug'])
+# EXAMPLE 2: crossword(['guacamole', 'television', 'microwave', 'dishes', 'laundry', 'couch', 'computer', 'backpack', 'slurmp', 'lofus', 'bezel'])
